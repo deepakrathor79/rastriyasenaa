@@ -222,13 +222,14 @@ button:hover {
   margin-top: 15px;
   padding: 12px;
   border-radius: 6px;
-  background: #e8f5e9;
+  background: #787892;
   color: #2e7d32;
-  border: 1px solid #4caf50;
+  border: 10px solid #4caf50;
   font-weight: bold;
 }
 
 /* Jab URL mein #thankYou aata hai tab dikhana */
-#thankYou:target {
+.thankYou:target {
   display: block;
 }
+
