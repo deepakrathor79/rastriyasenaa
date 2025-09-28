@@ -4,7 +4,7 @@
     <meta name="google-site-verification" content="hcWP6gMEfMObKH_kvyK7NXX56RIlZT_Ze21ZKDc0RVM" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RastriyaSena</title>
+    <title>Rastriyasena</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -55,7 +55,7 @@
         
 <section id="register" class="section">
   <h2>Join RastriySena</h2>
-  <form action="#thankYou" method="post">
+  <form id="registerForm">
     <input type="text" name="name" placeholder="Your Full Name" required>
     <input type="email" name="email" placeholder="Email Address" required 
       pattern="[a-zA-Z0-9._%+-]+@gmail\.com" 
@@ -64,30 +64,37 @@
     <input type="text" name="city" placeholder="City" required>
     <button type="submit">Register</button>
   </form>
-    <script>
-document.getElementById("regForm").addEventListener("submit", function(e) {
-  e.preventDefault();
 
-  fetch("https://script.google.com/macros/s/AKfycbxOHKM6_3jPUn7rM7x4Nxo8l-oHWtt9JHgeJkh9LxFoP8MjzlJa32PgnLBnJdb6Z5Us/exec", {
-    method: "POST",
-    body: JSON.stringify({
-      name: document.querySelector("#regForm input[name='name']").value,
-      email: document.querySelector("#regForm input[name='email']").value,
-      phone: document.querySelector("#regForm input[name='phone']").value,
-      city: document.querySelector("#regForm input[name='city']").value
+  <div id="thankYou" class="thankyou-msg" style="display:none;">
+    <p>Aapka form successfully submit ho gaya hai.</p>
+    <p>Hamari team jald hi aapse sampark karegi.</p>
+    <p><strong>Note:</strong> Hamari team aapse aapka Aadhaar card maangegi.</p>
+  </div>
+</section>
+
+<script>
+  const scriptURL = "https://script.google.com/macros/s/AKfycbxka879SU15fK9sym0s0-dmcntxBzD0QYnMgLUWsqTX9240SsjRzgOMyqNptQprI-9y/exec"; // yaha apna Apps Script URL daalo
+  const form = document.getElementById("registerForm");
+
+  form.addEventListener("submit", e => {
+    e.preventDefault();
+
+    fetch(scriptURL, {
+      method: "POST",
+      body: new FormData(form)
     })
-  })
-  .then(res => res.text())
-  .then(data => {
-    alert("✅ Registration successful!");
-    document.getElementById("regForm").reset();
-  })
-  .catch(err => alert("❌ Error: " + err));
-});
+    .then(response => {
+      form.style.display = "none";
+      document.getElementById("thankYou").style.display = "block";
+    })
+    .catch(error => console.error('Error!', error.message));
+  });
 </script>
 
-</section>
+
 <section>
+
+
   
   <!-- Thank You message -->
   <div id="thankYou" class="thankyou-msg">
@@ -125,7 +132,7 @@ document.getElementById("regForm").addEventListener("submit", function(e) {
   </div>
 
   </body>
-
 </html>
+
 
 
