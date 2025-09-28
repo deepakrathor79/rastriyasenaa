@@ -68,7 +68,7 @@
 document.getElementById("regForm").addEventListener("submit", function(e) {
   e.preventDefault();
 
-  fetch("PASTE_YOUR_GOOGLE_SCRIPT_URL_HERE", {
+  fetch("https://script.google.com/macros/s/AKfycbxOHKM6_3jPUn7rM7x4Nxo8l-oHWtt9JHgeJkh9LxFoP8MjzlJa32PgnLBnJdb6Z5Us/exec", {
     method: "POST",
     body: JSON.stringify({
       name: document.querySelector("#regForm input[name='name']").value,
@@ -127,4 +127,5 @@ document.getElementById("regForm").addEventListener("submit", function(e) {
   </body>
 
 </html>
+
 
